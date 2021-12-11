@@ -1,5 +1,6 @@
 function loadProjectsToDom(projects) {
     const projectsBar = document.querySelector(".project");
+    projectsBar.innerHTML = "";
     for (let i = 0; i < projects.length; i++) {
         const projectDiv = document.createElement("div");
         projectDiv.textContent = projects[i];

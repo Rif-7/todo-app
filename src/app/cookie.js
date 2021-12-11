@@ -19,8 +19,14 @@ function saveTodo(todo) {
     localStorage.setItem(todo.project, JSON.stringify(project));
 }
 
+function loadProjectList() {
+    console.log(JSON.parse(localStorage.getItem("projects")));
+    return JSON.parse(localStorage.getItem("projects"));
+    
+}
+
 function loadProject(projectName) {
     return JSON.parse(localStorage.getItem(projectName))["todos"];
 }
 
-export {createProject, saveTodo, loadProject};
+export {createProject, saveTodo, loadProject, loadProjectList};

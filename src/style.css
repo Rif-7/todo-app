@@ -66,8 +66,11 @@ body {
 .project {
     width: 90%;
     height: 300px;
-    border: 2px solid black;
+    border: 2px solid red;
     background-color: burlywood;
+    color: black;
+    padding-left: 4px;
+    overflow: auto;
 }
 
 .todo-item {

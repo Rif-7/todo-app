@@ -1,7 +1,7 @@
 import "./style.css"
 import { compareAsc, format } from 'date-fns';
-import {createProject, saveTodo, loadProject} from "./app/cookie";
-import {loadProjectToDom, loadProjectDataToDom} from "./app/dom"
+import {createProject, saveTodo, loadProject, loadProjectList} from "./app/cookie";
+import {loadProjectsToDom, loadProjectDataToDom} from "./app/dom"
 
 function todoItem(title, dueDate, description, priority, project="default", checked=false) {
     this.title = title
@@ -24,7 +24,15 @@ function recreateTodos(data) {
 
 const newProject = document.querySelector(".create-btn");
 newProject.addEventListener("click", () => {
-    return;
+    const title = document.querySelector(".project-name").value;
+    if (!title) {
+        alert("Invalid Title");
+        return;
+    }
+    createProject(title);
+    loadProjectsToDom(loadProjectList());
+    document.querySelector(".project-name").value = "";
 });
 
+loadProjectsToDom(loadProjectList());
 
