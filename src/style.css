@@ -28,7 +28,7 @@ body {
 }
 
 .side-bar {
-    max-width: 250px;
+    max-width: 300px;
     flex: 1 1 auto;
     align-items: center;
     background-color: rebeccapurple;
@@ -50,7 +50,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 5px;
+    width: 90%;
     margin-bottom: 8px;
 }
 
@@ -64,17 +66,43 @@ body {
 }
 
 .project {
-    width: 90%;
+    width: 80%;
     height: 300px;
     border: 2px solid red;
     background-color: burlywood;
     color: black;
-    padding-left: 4px;
+    padding-left: 16px;
     overflow: auto;
+    margin-left: 5x;
 }
 
 .todo-item {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    margin: 3px 8px;
+    background-color: yellow;
+    color: white;
+}
+
+.project-title {
+    width: 90%;
+    height: 30px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 0px;
+}
+
+.project-name {
+    font-size: 22px;
+    width: 90%;
+    background-color: tomato;
+    margin: 6px 0px;
+}
+
+.header {
+    margin-bottom: 5px;
+    align-self: flex-start;
+    padding-left: 5px;
 }
 

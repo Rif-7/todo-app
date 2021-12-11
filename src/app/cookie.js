@@ -1,13 +1,17 @@
-function createProject(title) {
+function initLocalStorage() {
     if (!localStorage.getItem("projects")) {
-        localStorage.setItem("projects", JSON.stringify(["default"]));
+        localStorage.setItem("projects", JSON.stringify(["Home"]))
     }
+}
+
+function createProject(title) {
+    initLocalStorage();
     const projects = JSON.parse(localStorage.getItem("projects"));
     if (projects.includes(title)) return alert("project already exists");
     projects.push(title);
     localStorage.setItem("projects", JSON.stringify(projects));
 
-    localStorage.setItem(title, JSON.stringify({"todos": []}));
+    localStorage.setItem(title, JSON.stringify([]));
 }
 
 function saveTodo(todo) {
@@ -20,13 +24,11 @@ function saveTodo(todo) {
 }
 
 function loadProjectList() {
-    console.log(JSON.parse(localStorage.getItem("projects")));
     return JSON.parse(localStorage.getItem("projects"));
-    
 }
 
 function loadProject(projectName) {
-    return JSON.parse(localStorage.getItem(projectName))["todos"];
+    return JSON.parse(localStorage.getItem(projectName));
 }
 
-export {createProject, saveTodo, loadProject, loadProjectList};
+export {createProject, saveTodo, loadProject, loadProjectList, initLocalStorage};

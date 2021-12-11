@@ -1,3 +1,5 @@
+import {loadProject} from "./cookie";
+
 function loadProjectsToDom(projects) {
     const projectsBar = document.querySelector(".project");
     projectsBar.innerHTML = "";
@@ -5,19 +7,26 @@ function loadProjectsToDom(projects) {
         const projectDiv = document.createElement("div");
         projectDiv.textContent = projects[i];
         projectDiv.classList.add("project-name");
+        projectDiv.setAttribute("data-name", projects[i]);
+        projectDiv.addEventListener("click", function () {
+            loadTodosToDom(loadProject(projects[i]));
+        })
         projectsBar.appendChild(projectDiv);
     }
 }
 
-function loadProjectDataToDom(projectData) {
+
+function loadTodosToDom(todos) {
+    if (!todos) return;
     const contentDiv = document.querySelector(".content");
-    for (let i = 0; i < projectData.length; i++) {
-        const todo = projectData[i];
+    for (let i = 0; i < todos.length; i++) {
+        const currentTodo = todos[i];
         const todoDiv = document.createElement("div");
         todoDiv.classList.add("todo-item");
-        todoDiv.textContent = `${todo.title} ${todo.description}`;
+        todoDiv.textContent = currentTodo.title;
+        todoDiv.setAttribute("data-index", i);
         contentDiv.appendChild(todoDiv);
     }
 }
 
-export {loadProjectsToDom, loadProjectDataToDom};
+export {loadProjectsToDom};
