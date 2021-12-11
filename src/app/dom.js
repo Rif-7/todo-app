@@ -17,7 +17,6 @@ function loadProjectsToDom(projects) {
 
 
 function loadTodosToDom(todos) {
-    if (!todos) return;
     const contentDiv = document.querySelector(".content");
     for (let i = 0; i < todos.length; i++) {
         const currentTodo = todos[i];

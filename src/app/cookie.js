@@ -1,6 +1,7 @@
 function initLocalStorage() {
     if (!localStorage.getItem("projects")) {
-        localStorage.setItem("projects", JSON.stringify(["Home"]))
+        localStorage.setItem("projects", JSON.stringify(["Home"]));
+        localStorage.setItem("Home", JSON.stringify([]));
     }
 }
 
