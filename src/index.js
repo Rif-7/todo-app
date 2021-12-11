@@ -1,7 +1,7 @@
 import "./style.css"
 import { compareAsc, format } from 'date-fns';
-import {createProject, saveTodo, loadProjectList, initLocalStorage} from "./app/cookie";
-import {loadProjectsToDom} from "./app/dom"
+import {createProject, saveTodo, loadProjectList, initLocalStorage} from "./app/localStorageFunctions";
+import {loadProjectsToDom} from "./app/DomFunctions"
 
 function todoItem(title, dueDate, description, priority, project="default", checked=false) {
     this.title = title
@@ -16,7 +16,7 @@ todoItem.prototype.toggleCheck = function() {
     this.checked = !this.checked;
 }
 
-// recreates todos from the cookie data
+// recreates todo objects from the cookie data
 function recreateTodos(data) {
     return new todoItem(data.title, data.dueDate, data.description,
                         data.priority, data.project, data.checked);
@@ -38,6 +38,6 @@ newProjectBtn.addEventListener("click", () => {
 initLocalStorage();
 loadProjectsToDom(loadProjectList());
 
-// The first project-name will be home 
+// The first project-name will be Home 
 document.querySelector(".project-name").click();
 

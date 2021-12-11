@@ -1,4 +1,4 @@
-import {loadProject} from "./cookie";
+import {loadProject} from "./localStorageFunctions";
 
 function loadProjectsToDom(projects) {
     const projectsBar = document.querySelector(".project");
