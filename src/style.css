@@ -38,6 +38,7 @@ body {
     flex: 3 1 auto;
     background-color: green;
     align-items: flex-start;
+    padding-left: 8px;
 
 }
 
@@ -106,3 +107,79 @@ body {
     padding-left: 5px;
 }
 
+
+
+
+
+
+
+/* MODAL STYLES */
+
+#todo-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    background-color: #fefefe;
+    margin: 10% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    height: 320px;
+    font-size: 18px;
+    font-weight: 200;
+    border-radius: 15px;
+}
+
+  .close {
+    align-self: flex-end;
+    background-color: rgb(206, 206, 206);
+    border-radius: 30px;
+    border: 0px;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .todo-fields {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+textarea {
+    width: 80%;
+    height: 60px;
+}
+
+.save-todo {
+    font-family: monospace;
+    color: black;
+    background-color: blanchedalmond;
+    border-radius: 4px;
+    border: 0px;
+    font-size: 16px;
+    padding: 8px 16px;
+    margin: auto;
+}
+
+.save-todo:hover {
+    border: 2px solid black;
+}
+
+input, textarea {
+    font-size: 16px;
+}

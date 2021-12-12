@@ -1,4 +1,5 @@
 import {loadProject} from "./localStorageFunctions";
+let currentProject;
 
 function loadProjectsToDom(projects) {
     const projectsBar = document.querySelector(".project");
@@ -9,6 +10,7 @@ function loadProjectsToDom(projects) {
         projectDiv.classList.add("project-name");
         projectDiv.setAttribute("data-name", projects[i]);
         projectDiv.addEventListener("click", function () {
+            currentProject = projects[i];
             loadTodosToDom(loadProject(projects[i]));
         })
         projectsBar.appendChild(projectDiv);
@@ -28,4 +30,4 @@ function loadTodosToDom(todos) {
     }
 }
 
-export {loadProjectsToDom};
+export {loadProjectsToDom, currentProject};

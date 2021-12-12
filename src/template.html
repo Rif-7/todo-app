@@ -10,17 +10,49 @@
     <div id="nav-bar">
         <div>//TODO</div>
     </div>
+
+    <!-- MODAL -->
+    <div id="todo-modal">
+        <div class="modal-content">
+            <button class="close">&times;</button>
+            <div class="todo-fields">
+                <label>Title:</label>
+                <input type="text">
+            </div>
+                <div class="todo-fields">
+                    <label>Due Date:</label>
+                    <input type="date">
+                </div>
+                <div class="todo-fields">
+                    <label for="priority">Priority:</label>
+                    <select name="priority" id="priority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="todo-fields">
+                    <label>Description:</label>
+                    <textarea></textarea>
+                </div>
+                <button class="save-todo">Save</button>
+        </div>
+    </div>
+    <!-- MODAL END -->
+
     <div class="container">
         <div class="side-bar">
             <div class="new-project">
                 <input type="text" placeholder="Title" class="project-title">
-                <button class="create-btn">Create Project</button>
+                <button class="create-btn create-project">Create Project</button>
             </div>
             <div class="default"></div>
             <h3 class="header">Projects</h3>
             <div class="project"></div>
         </div>
-        <div class="content"></div>
+        <div class="content">
+            <button id="add-todo" class="create-btn create-todo">Add Todo</button>
+        </div>
     </div>
 </body>
 </html>
