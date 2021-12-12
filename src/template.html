@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todo App</title>
 </head>
 <body>
     <div id="nav-bar">
@@ -17,15 +17,15 @@
             <button class="close">&times;</button>
             <div class="todo-fields">
                 <label>Title:</label>
-                <input type="text">
+                <input id="todo-title" type="text">
             </div>
                 <div class="todo-fields">
                     <label>Due Date:</label>
-                    <input type="date">
+                    <input id="todo-due-date" type="date">
                 </div>
                 <div class="todo-fields">
                     <label for="priority">Priority:</label>
-                    <select name="priority" id="priority">
+                    <select name="priority" id="todo-priority">
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
                         <option value="high">High</option>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="todo-fields">
                     <label>Description:</label>
-                    <textarea></textarea>
+                    <textarea id="todo-description"></textarea>
                 </div>
                 <button class="save-todo">Save</button>
         </div>

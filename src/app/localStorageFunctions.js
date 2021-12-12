@@ -19,7 +19,7 @@ function saveTodo(todo) {
     if (!localStorage.getItem(todo.project)) return alert("project doesn't exist");
 
     const project = JSON.parse(localStorage.getItem(todo.project));
-    project["todos"].push(JSON.stringify(todo));
+    project.push(JSON.stringify(todo));
 
     localStorage.setItem(todo.project, JSON.stringify(project));
 }

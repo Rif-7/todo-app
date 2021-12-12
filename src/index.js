@@ -1,7 +1,7 @@
 import "./style.css"
 import { compareAsc, format } from 'date-fns';
 import {createProject, saveTodo, loadProjectList, initLocalStorage} from "./app/localStorageFunctions";
-import {loadProjectsToDom, currentProject} from "./app/DomFunctions"
+import {loadProjectsToDom, setModal, loadNewTodoDetails} from "./app/DomFunctions"
 
 function todoItem(title, dueDate, description, priority, project="default", checked=false) {
     this.title = title
@@ -34,43 +34,21 @@ newProjectBtn.addEventListener("click", () => {
     document.querySelector(".project-name").value = "";
 });
 
-const newTodoBtn = document.querySelector(".create-todo");
-newTodoBtn.addEventListener("click", () => {
-    return;
+const saveBtn = document.querySelector(".save-todo");
+saveBtn.addEventListener("click", function() {
+    const todoDetails = loadNewTodoDetails();
+    const todo = new todoItem(todoDetails.title, todoDetails.dueDate, todoDetails.description,
+        todoDetails.priority, todoDetails.project);
+    saveTodo(todo);
 });
 
 
 initLocalStorage();
 loadProjectsToDom(loadProjectList());
+setModal();
 
 // The first project-name will be Home 
 document.querySelector(".project-name").click();
 
 
 
-
-// MODAL STUFF
-
-// Get the modal
-const modal = document.getElementById("todo-modal");
-
-// Get the button that opens the modal
-const addTodoBtn = document.getElementById("add-todo");
-
-const closeBtn = document.querySelector(".close");
-
-// When the user clicks on the button, open the modal
-addTodoBtn.addEventListener("click", function() {
-    modal.style.display = "block";
-});
-
-closeBtn.addEventListener("click", function() {
-    modal.style.display = "none";
-});
-
-// When the user clicks anywhere outside of the modal, close it
-window.addEventListener("click", function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-}); 
