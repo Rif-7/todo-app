@@ -1,4 +1,4 @@
-import {loadProject} from "./localStorageFunctions";
+import {loadProject, changeTodoState} from "./localStorageFunctions";
 
 let currentProject;
 
@@ -26,6 +26,7 @@ function reloadTodos() {
 function loadTodosToDom(todos) {
     const contentDiv = document.querySelector(".todo-div");
     contentDiv.innerHTML = "";
+    console.log(todos);
     for (let i = 0; i < todos.length; i++) {
         const currentTodo = JSON.parse(todos[i]);
         const todoDiv = document.createElement("div");
@@ -42,8 +43,15 @@ function loadTodosToDom(todos) {
 
         const checkBtn = document.createElement("input");
         checkBtn.type = "checkbox";
+        if (currentTodo.checked) {
+            checkBtn.checked = true;
+        }
         rightDiv.appendChild(checkBtn);
         rightDiv.classList.add("due-date-field");
+
+        checkBtn.addEventListener("change", () => {
+            changeTodoState(currentProject, i);
+        })
 
         todoDiv.appendChild(rightDiv);
         contentDiv.appendChild(todoDiv);

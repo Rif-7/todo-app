@@ -28,8 +28,17 @@ function loadProjectList() {
     return JSON.parse(localStorage.getItem("projects"));
 }
 
+function changeTodoState(projectName, todoIndex) {
+    const projectData = loadProject(projectName);
+    const todo  = JSON.parse(projectData[todoIndex]);
+    todo.checked = !todo.checked;
+    projectData[todoIndex] = JSON.stringify(todo);
+    localStorage.setItem(projectName, JSON.stringify(projectData));
+
+}
+
 function loadProject(projectName) {
     return JSON.parse(localStorage.getItem(projectName));
 }
 
-export {createProject, saveTodo, loadProject, loadProjectList, initLocalStorage};
+export {createProject, saveTodo, loadProject, loadProjectList, initLocalStorage, changeTodoState};
