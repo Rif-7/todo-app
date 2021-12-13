@@ -9,7 +9,6 @@ function loadProjectsToDom(projects) {
         const projectDiv = document.createElement("div");
         projectDiv.textContent = projects[i];
         projectDiv.classList.add("project-name");
-        projectDiv.setAttribute("data-name", projects[i]);
         projectDiv.addEventListener("click", function () {
             currentProject = projects[i];
             loadTodosToDom(loadProject(projects[i]));
@@ -18,15 +17,35 @@ function loadProjectsToDom(projects) {
     }
 }
 
+function reloadTodos() {
+    loadTodosToDom(loadProject(currentProject));
+    return;
+}
+
 
 function loadTodosToDom(todos) {
-    const contentDiv = document.querySelector(".content");
+    const contentDiv = document.querySelector(".todo-div");
+    contentDiv.innerHTML = "";
     for (let i = 0; i < todos.length; i++) {
         const currentTodo = JSON.parse(todos[i]);
         const todoDiv = document.createElement("div");
         todoDiv.classList.add("todo-item");
-        todoDiv.textContent = currentTodo.title;
-        todoDiv.setAttribute("data-index", i);
+
+        const leftDiv = document.createElement("div");
+        leftDiv.textContent = currentTodo.title;
+        todoDiv.appendChild(leftDiv);
+
+        const rightDiv = document.createElement("div");
+        const date = document.createElement("span");
+        date.textContent = currentTodo.dueDate;
+        rightDiv.appendChild(date);
+
+        const checkBtn = document.createElement("input");
+        checkBtn.type = "checkbox";
+        rightDiv.appendChild(checkBtn);
+        rightDiv.classList.add("due-date-field");
+
+        todoDiv.appendChild(rightDiv);
         contentDiv.appendChild(todoDiv);
     }
 }
@@ -66,4 +85,4 @@ function loadNewTodoDetails() {
 
 
 
-export {loadProjectsToDom, currentProject, setModal, loadNewTodoDetails};
+export {loadProjectsToDom, currentProject, setModal, loadNewTodoDetails, reloadTodos};
