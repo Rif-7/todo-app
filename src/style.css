@@ -42,10 +42,6 @@ body {
 
 }
 
-.info {
-    padding-left: 16px;
-}
-
 .new-project {
     font-size: 16px;
     display: flex;
@@ -128,7 +124,6 @@ body {
     height: 100%;
 }
 
-
 .due-date-field {
     font-size: 18px;
 }
@@ -140,7 +135,7 @@ body {
 
 /* MODAL STYLES */
 
-#todo-modal {
+#todo-modal, #details-modal {
     display: none; 
     position: fixed;
     z-index: 1;
@@ -152,25 +147,36 @@ body {
     background-color: rgba(0,0,0,0.4);
   }
 
-  .modal-content {
+
+.details-content, .modal-content {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 5px;
     background-color: #fefefe;
-    margin: 10% auto; 
-    padding: 20px;
     border: 1px solid #888;
-    width: 300px;
-    height: 320px;
+    margin: 10% auto; 
+    border-radius: 15px;
+    align-items: flex-start;
+    padding: 20px;
     font-size: 18px;
     font-weight: 200;
-    border-radius: 15px;
 }
+
+.modal-content {
+    width: 300px;
+    height: 320px;
+    
+}
+
+.details-content {
+    width: 600px;
+    height: 150px;
+}
+
 
   .close {
     align-self: flex-end;
-    background-color: rgb(206, 206, 206);
+    background-color: #fefefe;
     border-radius: 30px;
     border: 0px;
     font-size: 28px;
@@ -190,7 +196,7 @@ textarea {
     height: 60px;
 }
 
-.save-todo {
+.save-todo, .details-btn {
     font-family: monospace;
     color: black;
     background-color: blanchedalmond;
@@ -201,10 +207,19 @@ textarea {
     margin: auto;
 }
 
+.details-btn {
+    padding: 6px 12px;
+    margin-right: 5px;
+}
+
 .save-todo:hover {
     border: 2px solid black;
 }
 
 input, textarea {
     font-size: 16px;
+}
+
+span .due-date {
+    margin-left: auto;
 }

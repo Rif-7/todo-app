@@ -33,6 +33,10 @@ saveBtn.addEventListener("click", function() {
     reloadTodos();
 });
 
+document.querySelector(".details-close").addEventListener("click", function() {
+    document.querySelector("#details-modal").style.display = "none";
+});
+
 
 initLocalStorage();
 loadProjectsToDom(loadProjectList());

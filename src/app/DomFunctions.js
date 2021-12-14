@@ -1,6 +1,12 @@
 import {loadProject, changeTodoState} from "./localStorageFunctions";
 
 let currentProject;
+const detailsContainer = document.querySelector("#details-modal");
+const detailsDueDate = detailsContainer.querySelector(".due-date");
+const detailsTitle = detailsContainer.querySelector(".title");
+const detailsDescription = detailsContainer.querySelector(".description");
+const detailsPriority = detailsContainer.querySelector(".priority");
+const detailsCheckedInfo = detailsContainer.querySelector(".checked-info");
 
 function loadProjectsToDom(projects) {
     const projectsBar = document.querySelector(".project");
@@ -37,6 +43,21 @@ function loadTodosToDom(todos) {
         todoDiv.appendChild(leftDiv);
 
         const rightDiv = document.createElement("div");
+
+        const detailsBtn = document.createElement("button");
+        detailsBtn.classList.add("details-btn");
+        detailsBtn.textContent = "Details";
+        rightDiv.appendChild(detailsBtn);
+
+        detailsBtn.addEventListener("click", function() {
+            detailsTitle.textContent = currentTodo.title;
+            detailsDueDate.textContent = currentTodo.dueDate;
+            detailsDescription.textContent = currentTodo.description;
+            detailsPriority.textContent = currentTodo.priority;
+            detailsCheckedInfo.textContent = currentTodo.checked;
+            detailsContainer.style.display = "block";
+        });
+
         const date = document.createElement("span");
         date.textContent = currentTodo.dueDate;
         rightDiv.appendChild(date);
@@ -76,7 +97,7 @@ function setModal() {
     // When the user clicks anywhere outside of the modal, close it
     window.addEventListener("click", function() {
         if (event.target == modal) {
-        modal.style.display = "none";
+            modal.style.display = "none";
         }
     }); 
 }

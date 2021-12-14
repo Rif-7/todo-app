@@ -41,4 +41,5 @@ function loadProject(projectName) {
     return JSON.parse(localStorage.getItem(projectName));
 }
 
-export {createProject, saveTodo, loadProject, loadProjectList, initLocalStorage, changeTodoState};
+export {createProject, saveTodo, loadProject,
+     loadProjectList, initLocalStorage, changeTodoState};
