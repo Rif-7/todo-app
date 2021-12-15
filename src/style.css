@@ -171,6 +171,7 @@ body {
 .details-content {
     width: 600px;
     height: 150px;
+    padding: 10px;
 }
 
 
@@ -220,6 +221,18 @@ input, textarea {
     font-size: 16px;
 }
 
-span .due-date {
-    margin-left: auto;
+.grouped-info {
+    width: 100%;
+    display: flex;
+    gap: 50px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.checked-info, .priority {
+    padding: 0px 3px;
+    color: white;
 }

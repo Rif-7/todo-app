@@ -39,7 +39,11 @@ function loadTodosToDom(todos) {
         todoDiv.classList.add("todo-item");
 
         const leftDiv = document.createElement("div");
-        leftDiv.textContent = currentTodo.title;
+        if (currentTodo.checked) {
+            leftDiv.innerHTML = currentTodo.title.strike();
+        } else {
+            leftDiv.textContent = currentTodo.title;
+        }
         todoDiv.appendChild(leftDiv);
 
         const rightDiv = document.createElement("div");
@@ -50,12 +54,7 @@ function loadTodosToDom(todos) {
         rightDiv.appendChild(detailsBtn);
 
         detailsBtn.addEventListener("click", function() {
-            detailsTitle.textContent = currentTodo.title;
-            detailsDueDate.textContent = currentTodo.dueDate;
-            detailsDescription.textContent = currentTodo.description;
-            detailsPriority.textContent = currentTodo.priority;
-            detailsCheckedInfo.textContent = currentTodo.checked;
-            detailsContainer.style.display = "block";
+            loadDetails(currentTodo);
         });
 
         const date = document.createElement("span");
@@ -72,12 +71,43 @@ function loadTodosToDom(todos) {
 
         checkBtn.addEventListener("change", () => {
             changeTodoState(currentProject, i);
+            loadTodosToDom(loadProject(currentProject));
         })
 
         todoDiv.appendChild(rightDiv);
         contentDiv.appendChild(todoDiv);
     }
 }
+
+function loadDetails(currentTodo) {
+    detailsTitle.textContent = currentTodo.title;
+    detailsDueDate.textContent = currentTodo.dueDate;
+    detailsDescription.textContent = currentTodo.description;
+    switch(currentTodo.priority) {
+        case "high":
+            detailsPriority.textContent = "High";
+            detailsPriority.style.backgroundColor = "red";
+            break;
+        case "medium":
+            detailsPriority.textContent = "Medium";
+            detailsPriority.style.backgroundColor = "green";
+            break;
+        default:
+            detailsPriority.textContent = "Low";
+            detailsPriority.style.backgroundColor = "blue";
+            break;
+    }
+    
+    if (currentTodo.checked) {
+        detailsCheckedInfo.textContent = "Finished";
+        detailsCheckedInfo.style.backgroundColor = "green";
+    } else {
+        detailsCheckedInfo.textContent = "Unfinished";;
+        detailsCheckedInfo.style.backgroundColor = "red";
+    }
+    detailsContainer.style.display = "block";
+}
+
 
 function setModal() {
     const modal = document.getElementById("todo-modal");
