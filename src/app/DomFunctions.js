@@ -32,7 +32,6 @@ function reloadTodos() {
 function loadTodosToDom(todos) {
     const contentDiv = document.querySelector(".todo-div");
     contentDiv.innerHTML = "";
-    console.log(todos);
     for (let i = 0; i < todos.length; i++) {
         const currentTodo = JSON.parse(todos[i]);
         const todoDiv = document.createElement("div");

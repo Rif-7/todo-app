@@ -1,3 +1,5 @@
+import { compareAsc, format } from 'date-fns';
+
 function initLocalStorage() {
     if (!localStorage.getItem("projects")) {
         localStorage.setItem("projects", JSON.stringify(["Home"]));
@@ -41,5 +43,27 @@ function loadProject(projectName) {
     return JSON.parse(localStorage.getItem(projectName));
 }
 
-export {createProject, saveTodo, loadProject,
+function loadAllTodos() {
+    const projectNames = loadProjectList();
+    const allTodos = [];
+    for (let i = 0; i < projectNames.length; i++) {
+        const currentProject = loadProject(projectNames[i]);
+        allTodos.push(...currentProject);
+    }
+    return sortTodos(allTodos);
+    ;
+}
+
+function sortTodos(todos) {
+    return todos
+    .map(todo => {
+        const parsedTodo = JSON.parse(todo);
+        parsedTodo.dueDate = new Date(Date.parse(parsedTodo.dueDate));
+        return parsedTodo;
+    })
+    .sort((a, b) => compareAsc(a.dueDate, b.dueDate));
+}
+
+
+export {createProject, saveTodo, loadProject, loadAllTodos,
      loadProjectList, initLocalStorage, changeTodoState};

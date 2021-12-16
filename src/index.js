@@ -1,6 +1,5 @@
 import "./style.css"
-import { compareAsc, format } from 'date-fns';
-import {createProject, saveTodo, loadProjectList, initLocalStorage} from "./app/localStorageFunctions";
+import {createProject, saveTodo, loadProjectList, initLocalStorage, loadAllTodos} from "./app/localStorageFunctions";
 import {loadProjectsToDom, setModal, loadNewTodoDetails, reloadTodos} from "./app/DomFunctions"
 
 function todoItem(title, dueDate, description, priority, project="default", checked=false) {
@@ -41,6 +40,8 @@ document.querySelector(".details-close").addEventListener("click", function() {
 initLocalStorage();
 loadProjectsToDom(loadProjectList());
 setModal();
+
+console.log(loadAllTodos());
 
 // The first project-name will be Home 
 document.querySelector(".project-name").click();

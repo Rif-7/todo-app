@@ -99,10 +99,11 @@ body {
     width: 90%;
     background-color: tomato;
     margin: 6px 0px;
+    transition: 100ms;
 }
 
-.project-name:hover {
-    border: 2px solid black;
+.project-name:hover, .today-todo:hover {
+    transform: translate(1%, 1%);
 }
 
 .selected {
@@ -232,7 +233,12 @@ input, textarea {
     font-weight: 400;
 }
 
-.checked-info, .priority {
+.checked-info, .priority, .priority-label {
+    font-size: 16px;
     padding: 0px 3px;
     color: white;
+}
+
+.priority-label  {
+    color: black;
 }
