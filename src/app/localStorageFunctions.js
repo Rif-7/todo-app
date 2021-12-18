@@ -51,7 +51,6 @@ function loadAllTodos() {
         allTodos.push(...currentProject);
     }
     return sortTodos(allTodos);
-    ;
 }
 
 function sortTodos(todos) {
@@ -64,6 +63,27 @@ function sortTodos(todos) {
     .sort((a, b) => compareAsc(a.dueDate, b.dueDate));
 }
 
+function loadTodaysTodos() {
+    const allTodos = loadAllTodos();
+    const t =  new Date();
+    const today = new Date(t.getFullYear(), t.getMonth(), t.getDate());
+    const todaysTodos = [];
+    for (let i = 0; i < allTodos.length; i++) {
+        const currentTodo = allTodos[i];
+        const currentTodoDate = new Date(currentTodo.dueDate.getFullYear(),
+                                        currentTodo.dueDate.getMonth(),
+                                        currentTodo.dueDate.getDate());
+        if (currentTodoDate > today) {
+            break;
+        } else if (currentTodoDate.getTime() === today.getTime()) {
+            currentTodo.dueDate = format(currentTodo.dueDate, 'yyyy-MM-dd');
+            todaysTodos.push(currentTodo);
+            continue;
+        }
+    }
+    return todaysTodos;
+}
 
-export {createProject, saveTodo, loadProject, loadAllTodos,
+
+export {createProject, saveTodo, loadProject, loadTodaysTodos,
      loadProjectList, initLocalStorage, changeTodoState};

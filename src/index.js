@@ -1,6 +1,6 @@
 import "./style.css"
-import {createProject, saveTodo, loadProjectList, initLocalStorage, loadAllTodos} from "./app/localStorageFunctions";
-import {loadProjectsToDom, setModal, loadNewTodoDetails, reloadTodos} from "./app/DomFunctions"
+import {createProject, saveTodo, loadProjectList, initLocalStorage} from "./app/localStorageFunctions";
+import {loadProjectsToDom, setModal, loadNewTodoDetails, reloadTodos, loadTodaysTodosToDom} from "./app/DomFunctions"
 
 function todoItem(title, dueDate, description, priority, project="default", checked=false) {
     this.title = title
@@ -36,12 +36,13 @@ document.querySelector(".details-close").addEventListener("click", function() {
     document.querySelector("#details-modal").style.display = "none";
 });
 
+document.querySelector(".today-todo").addEventListener("click", loadTodaysTodosToDom);
+
 
 initLocalStorage();
 loadProjectsToDom(loadProjectList());
 setModal();
 
-console.log(loadAllTodos());
 
 // The first project-name will be Home 
 document.querySelector(".project-name").click();

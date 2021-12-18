@@ -1,6 +1,12 @@
-import {loadProject, changeTodoState} from "./localStorageFunctions";
+import { parse } from "date-fns";
+import {loadProject, changeTodoState, loadTodaysTodos} from "./localStorageFunctions";
 
 let currentProject;
+
+// Initializing last selected projects div to a dummy div
+let lastProjectDiv = document.createElement("div");
+lastProjectDiv.classList.add("selected");
+
 const detailsContainer = document.querySelector("#details-modal");
 const detailsDueDate = detailsContainer.querySelector(".due-date");
 const detailsTitle = detailsContainer.querySelector(".title");
@@ -16,8 +22,11 @@ function loadProjectsToDom(projects) {
         projectDiv.textContent = projects[i];
         projectDiv.classList.add("project-name");
         projectDiv.addEventListener("click", function () {
+            lastProjectDiv.classList.remove("selected");
             currentProject = projects[i];
             loadTodosToDom(loadProject(projects[i]));
+            projectDiv.classList.add("selected");
+            lastProjectDiv = projectDiv;
         })
         projectsBar.appendChild(projectDiv);
     }
@@ -29,11 +38,14 @@ function reloadTodos() {
 }
 
 
-function loadTodosToDom(todos) {
+function loadTodosToDom(todos, parsed=false) {
     const contentDiv = document.querySelector(".todo-div");
     contentDiv.innerHTML = "";
     for (let i = 0; i < todos.length; i++) {
-        const currentTodo = JSON.parse(todos[i]);
+        let currentTodo = todos[i];
+        if (!parsed) {
+             currentTodo = JSON.parse(currentTodo);
+        }
         const todoDiv = document.createElement("div");
         todoDiv.classList.add("todo-item");
 
@@ -72,6 +84,10 @@ function loadTodosToDom(todos) {
             changeTodoState(currentProject, i);
             loadTodosToDom(loadProject(currentProject));
         })
+
+        if (parsed) {
+            checkBtn.disabled = true;
+        }
 
         todoDiv.appendChild(rightDiv);
         contentDiv.appendChild(todoDiv);
@@ -142,5 +158,15 @@ function loadNewTodoDetails() {
 }
 
 
+function loadTodaysTodosToDom() {
+    const todaysTodos = loadTodaysTodos();
+    currentProject = "Home";
+    lastProjectDiv.classList.remove("selected");
+    lastProjectDiv = document.querySelector(".today-todo");
+    lastProjectDiv.classList.add("selected");
+    loadTodosToDom(todaysTodos, true);
 
-export {loadProjectsToDom, currentProject, setModal, loadNewTodoDetails, reloadTodos};
+}
+
+
+export {loadProjectsToDom, currentProject, setModal, loadNewTodoDetails, reloadTodos, loadTodaysTodosToDom};
