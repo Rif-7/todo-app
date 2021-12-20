@@ -2,6 +2,11 @@ import { parse } from "date-fns";
 import {loadProject, changeTodoState, loadTodaysTodos} from "./localStorageFunctions";
 
 let currentProject;
+const priorityColors = {
+    low: "blue",
+    medium: "green",
+    high: "red"
+};
 
 // Initializing last selected projects div to a dummy div
 let lastProjectDiv = document.createElement("div");
@@ -89,6 +94,11 @@ function loadTodosToDom(todos, parsed=false) {
             checkBtn.disabled = true;
         }
 
+        const priorityIndicator = document.createElement("div");
+        priorityIndicator.classList.add("priority-indicator");
+        priorityIndicator.style.backgroundColor = priorityColors[currentTodo.priority]; 
+
+        rightDiv.appendChild(priorityIndicator);
         todoDiv.appendChild(rightDiv);
         contentDiv.appendChild(todoDiv);
     }

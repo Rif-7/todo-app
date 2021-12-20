@@ -10,7 +10,7 @@ body {
     align-items: center;
     height: 80px;
     color: white;
-    background-color: black;
+    background-color: #202020;
     font-size: 32px;
 }
 
@@ -31,12 +31,12 @@ body {
     max-width: 300px;
     flex: 1 1 auto;
     align-items: center;
-    background-color: rebeccapurple;
+    background-color: #888;
 }   
 
 .content {
     flex: 3 1 auto;
-    background-color: green;
+    background-color: #1f2936;
     align-items: flex-start;
     padding-left: 8px;
 
@@ -59,16 +59,17 @@ body {
     font-weight: 500;
     color: white;
     padding: 6px 12px;
-    background-color: #3882F6;
-    border-radius: 15px;
+    background-color: #1f2936;
+    border-radius: 4px;
     border: 0px;
 }
 
 .project {
     width: 80%;
     height: 300px;
-    border: 2px solid red;
-    background-color: burlywood;
+    background-color: inherit;
+    border-top: 5px solid #1f2936;
+    border-bottom: 5px solid #1f2936;
     color: black;
     padding-left: 16px;
     overflow: auto;
@@ -81,8 +82,9 @@ body {
     width: 90%;
     height: 40px;
     margin: 8px;
-    background-color: yellow;
-    color: brown;
+    background-color: #E5E7EB;
+    color: black;
+    border-radius: 4px;
     justify-content: space-between;
     padding: 0px 3px;
 }
@@ -99,7 +101,8 @@ body {
 .project-name {
     font-size: 22px;
     width: 90%;
-    background-color: tomato;
+    background-color: #1f2936;
+    color: white;
     margin: 6px 0px;
     transition: 100ms;
     padding-left: 3px;
@@ -127,6 +130,7 @@ body {
 
 #add-todo {
     margin-bottom: 20px;
+    background-color: #888;
 }
 
 .todo-div {
@@ -136,9 +140,23 @@ body {
 
 .due-date-field {
     font-size: 18px;
+    display: flex;
+    align-items: center;
 }
 
+.priority-indicator {
+    width: 20px;
+    height: 40px;
+}
 
+.project::-webkit-scrollbar {
+    background-color: inherit;
+}
+
+.project::-webkit-scrollbar-thumb {
+    background-color: #1f2936;
+    border-radius: 15px;
+}
 
 
 
@@ -209,8 +227,8 @@ textarea {
 
 .save-todo, .details-btn {
     font-family: monospace;
-    color: black;
-    background-color: blanchedalmond;
+    color: white;
+    background-color: #1f2936;
     border-radius: 4px;
     border: 0px;
     font-size: 16px;
