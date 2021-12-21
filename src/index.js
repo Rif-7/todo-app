@@ -21,7 +21,7 @@ newProjectBtn.addEventListener("click", () => {
     }
     createProject(title);
     loadProjectsToDom(loadProjectList());
-    document.querySelector(".project-name").value = "";
+    document.querySelector(".project-title").value = "";
 });
 
 const saveBtn = document.querySelector(".save-todo");

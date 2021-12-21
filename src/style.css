@@ -2,9 +2,13 @@ body {
     margin: 0;
     font-family: monospace;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 #nav-bar {
+    flex: 0 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,6 +22,8 @@ body {
     display: flex;
     height: 100%;
     color: white;
+    flex: 1 0 auto;
+    padding-bottom: 10px;
 }
 
 .side-bar, .content {
@@ -135,7 +141,16 @@ body {
 
 .todo-div {
     width: 100%;
-    height: 100%;
+    height: 75%;
+    overflow: auto;
+}
+
+.todo-div::-webkit-scrollbar {
+    background-color: inherit;
+}
+
+.todo-div::-webkit-scrollbar-thumb {
+    background-color: #888;
 }
 
 .due-date-field {
