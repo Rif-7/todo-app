@@ -84,6 +84,26 @@ function loadTodaysTodos() {
     return todaysTodos;
 }
 
+function deleteTodo(projectName, index) {
+    const project = loadProject(projectName);
+    project.splice(index, 1);
+    localStorage.setItem(projectName, JSON.stringify(project));
+}
 
-export {createProject, saveTodo, loadProject, loadTodaysTodos,
-     loadProjectList, initLocalStorage, changeTodoState};
+function deleteProject(projectName) {
+    localStorage.removeItem(projectName);
+    const projectList = JSON.parse(localStorage.getItem("projects"));
+    let index;
+    for (let i = 0; i < projectList.length; i++) {
+        if (projectList[i] === projectName) {
+            index = i;
+            break;
+        }
+    }
+    projectList.splice(index, 1);
+    localStorage.setItem("projects", JSON.stringify(projectList));
+}
+
+
+export {createProject, saveTodo, loadProject, loadTodaysTodos, deleteProject,
+     loadProjectList, initLocalStorage, changeTodoState, deleteTodo};

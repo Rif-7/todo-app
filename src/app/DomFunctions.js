@@ -1,5 +1,5 @@
-import { parse } from "date-fns";
-import {loadProject, changeTodoState, loadTodaysTodos} from "./localStorageFunctions";
+import {loadProject, changeTodoState,
+        loadTodaysTodos, deleteTodo, deleteProject, loadProjectList} from "./localStorageFunctions";
 
 let currentProject;
 const priorityColors = {
@@ -19,7 +19,8 @@ const detailsDescription = detailsContainer.querySelector(".description");
 const detailsPriority = detailsContainer.querySelector(".priority");
 const detailsCheckedInfo = detailsContainer.querySelector(".checked-info");
 
-function loadProjectsToDom(projects) {
+function loadProjectsToDom() {
+    const projects = loadProjectList();
     const projectsBar = document.querySelector(".project");
     projectsBar.innerHTML = "";
     for (let i = 0; i < projects.length; i++) {
@@ -46,6 +47,11 @@ function reloadTodos() {
 function loadTodosToDom(todos, parsed=false) {
     const contentDiv = document.querySelector(".todo-div");
     contentDiv.innerHTML = "";
+    if (currentProject === "Home") {
+        document.querySelector("#delete-project").style.display = "none";
+    } else {
+        document.querySelector("#delete-project").style.display = "inline";
+    }
     for (let i = 0; i < todos.length; i++) {
         let currentTodo = todos[i];
         if (!parsed) {
@@ -63,6 +69,17 @@ function loadTodosToDom(todos, parsed=false) {
         todoDiv.appendChild(leftDiv);
 
         const rightDiv = document.createElement("div");
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "X";
+        deleteBtn.classList.add("create-btn", "delete-btn");
+        deleteBtn.addEventListener("click", function() {
+            deleteTodo(currentTodo.project, i);
+            reloadTodos();
+        })
+
+        rightDiv.appendChild(deleteBtn);
+
 
         const detailsBtn = document.createElement("button");
         detailsBtn.classList.add("details-btn");
@@ -92,6 +109,7 @@ function loadTodosToDom(todos, parsed=false) {
 
         if (parsed) {
             checkBtn.disabled = true;
+            deleteBtn.disabled = true;
         }
 
         const priorityIndicator = document.createElement("div");
@@ -148,13 +166,6 @@ function setModal() {
     closeBtn.addEventListener("click", function() {
         modal.style.display = "none";
     });
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.addEventListener("click", function() {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }); 
 }
 
 
@@ -178,5 +189,11 @@ function loadTodaysTodosToDom() {
 
 }
 
+function deleteProjectFromDom() {
+    deleteProject(currentProject);
+    loadProjectsToDom();
+}
 
-export {loadProjectsToDom, currentProject, setModal, loadNewTodoDetails, reloadTodos, loadTodaysTodosToDom};
+
+export {loadProjectsToDom, currentProject, setModal, loadNewTodoDetails,
+         reloadTodos, loadTodaysTodosToDom, deleteProjectFromDom};
