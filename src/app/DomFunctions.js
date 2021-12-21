@@ -63,6 +63,7 @@ function loadTodosToDom(todos, parsed=false) {
         const leftDiv = document.createElement("div");
         if (currentTodo.checked) {
             leftDiv.innerHTML = currentTodo.title.strike();
+            todoDiv.style.backgroundColor = "#808080";
         } else {
             leftDiv.textContent = currentTodo.title;
         }
