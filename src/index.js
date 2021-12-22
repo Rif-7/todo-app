@@ -31,6 +31,9 @@ saveBtn.addEventListener("click", function() {
         todoDetails.priority, todoDetails.project);
     saveTodo(todo);
     reloadTodos();
+    document.querySelector("#todo-title").value = "";
+    document.querySelector("#todo-description").value = "";
+    document.querySelector(".close").click();
 });
 
 document.querySelector(".details-close").addEventListener("click", function() {

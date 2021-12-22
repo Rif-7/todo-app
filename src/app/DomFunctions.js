@@ -18,6 +18,7 @@ const detailsTitle = detailsContainer.querySelector(".title");
 const detailsDescription = detailsContainer.querySelector(".description");
 const detailsPriority = detailsContainer.querySelector(".priority");
 const detailsCheckedInfo = detailsContainer.querySelector(".checked-info");
+const detailsProjectName = detailsContainer.querySelector(".todo-project");
 
 function loadProjectsToDom() {
     const projects = loadProjectList();
@@ -127,6 +128,7 @@ function loadDetails(currentTodo) {
     detailsTitle.textContent = currentTodo.title;
     detailsDueDate.textContent = currentTodo.dueDate;
     detailsDescription.textContent = currentTodo.description;
+    detailsProjectName.textContent = currentTodo.project;
     switch(currentTodo.priority) {
         case "high":
             detailsPriority.textContent = "High";
