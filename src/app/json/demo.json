@@ -1,0 +1,32 @@
+{
+    "projects": [
+        "Home",
+        "School"
+    ],
+    "Home": [
+        "{\"title\":\"Iron Shirts\",\"dueDate\":\"2021-12-22\",\"description\":\"Black Shirt\",\"priority\":\"low\",\"checked\":true,\"project\":\"Home\"}",
+        "{\"title\":\"Clean Room\",\"dueDate\":\"2022-01-30\",\"description\":\"Clean Your Room It's a week\",\"priority\":\"high\",\"checked\":false,\"project\":\"Home\"}",
+        "{\"title\":\"Buy Groceries\",\"dueDate\":\"2022-01-29\",\"description\":\"Don't forget to get milk\",\"priority\":\"medium\",\"checked\":false,\"project\":\"Home\"}",
+        "{\"title\":\"Finish Todo App\",\"dueDate\":\"2021-12-26\",\"description\":\"Done\",\"priority\":\"high\",\"checked\":true,\"project\":\"Home\"}",
+        "{\"title\":\"Start A New Project\",\"dueDate\":\"2022-01-01\",\"description\":\"yea\",\"priority\":\"medium\",\"checked\":false,\"project\":\"Home\"}",
+        "{\"title\":\"Change Toothbrush\",\"dueDate\":\"2022-01-22\",\"description\":\"Get a blue one\",\"priority\":\"high\",\"checked\":true,\"project\":\"Home\"}",
+        "{\"title\":\"Exercise\",\"dueDate\":\"2022-01-29\",\"description\":\"Everyday\",\"priority\":\"low\",\"checked\":false,\"project\":\"Home\"}",
+        "{\"title\":\"Finish Reading\",\"dueDate\":\"2022-03-08\",\"description\":\"Any book\",\"priority\":\"low\",\"checked\":false,\"project\":\"Home\"}",
+        "{\"title\":\"This Is Getting Boring\",\"dueDate\":\"2022-03-08\",\"description\":\"It really is\",\"priority\":\"medium\",\"checked\":true,\"project\":\"Home\"}",
+        "{\"title\":\"Just One More\",\"dueDate\":\"2022-03-08\",\"description\":\"Fake Todo\",\"priority\":\"high\",\"checked\":true,\"project\":\"Home\"}",
+        "{\"title\":\"Phew! Finnaly\",\"dueDate\":\"2022-03-08\",\"description\":\"Yeaa\",\"priority\":\"medium\",\"checked\":false,\"project\":\"Home\"}"
+    ],
+    "School": [
+        "{\"title\":\"Do HW\",\"dueDate\":\"2021-12-21\",\"description\":\"Linear Algebra\",\"priority\":\"medium\",\"checked\":false,\"project\":\"School\"}",
+        "{\"title\":\"Pay Fees\",\"dueDate\":\"2021-12-25\",\"description\":\"Uniform Fee\",\"priority\":\"low\",\"checked\":true,\"project\":\"School\"}",
+        "{\"title\":\"Finish Reading\",\"dueDate\":\"2021-12-24\",\"description\":\"Not Maths\",\"priority\":\"high\",\"checked\":false,\"project\":\"School\"}",
+        "{\"title\":\"Buy Notebooks\",\"dueDate\":\"2021-12-24\",\"description\":\"4 Unruled\",\"priority\":\"medium\",\"checked\":true,\"project\":\"School\"}",
+        "{\"title\":\"Complete Notes\",\"dueDate\":\"2021-12-24\",\"description\":\"Chemistry\",\"priority\":\"low\",\"checked\":false,\"project\":\"School\"}",
+        "{\"title\":\"Wash Backpack\",\"dueDate\":\"2021-12-24\",\"description\":\"Take the books out before\",\"priority\":\"low\",\"checked\":false,\"project\":\"School\"}",
+        "{\"title\":\"Change Pens\",\"dueDate\":\"2021-12-23\",\"description\":\"Blue\",\"priority\":\"low\",\"checked\":true,\"project\":\"School\"}",
+        "{\"title\":\"Take Food\",\"dueDate\":\"2021-12-23\",\"description\":\"School luch\",\"priority\":\"high\",\"checked\":false,\"project\":\"School\"}",
+        "{\"title\":\"Take Lab Coat\",\"dueDate\":\"2021-12-23\",\"description\":\"It's thursday\",\"priority\":\"high\",\"checked\":true,\"project\":\"School\"}",
+        "{\"title\":\"Umbrellas\",\"dueDate\":\"2021-12-24\",\"description\":\"It's gonna rain\",\"priority\":\"high\",\"checked\":false,\"project\":\"School\"}",
+        "{\"title\":\"Print Notes\",\"dueDate\":\"2021-12-22\",\"description\":\"Chemistry Notes\",\"priority\":\"high\",\"checked\":false,\"project\":\"School\"}"
+    ]
+}
